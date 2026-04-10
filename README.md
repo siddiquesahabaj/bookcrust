@@ -1,80 +1,114 @@
-# FastAPI Beyond CRUD 
+# BookCrust API
 
-This is the source code for the [FastAPI Beyond CRUD](https://youtube.com/playlist?list=PLEt8Tae2spYnHy378vMlPH--87cfeh33P&si=rl-08ktaRjcm2aIQ) course. The course focuses on FastAPI development concepts that go beyond the basic CRUD operations.
+BookCrust is a backend project for a book-review platform. I built it to demonstrate production-style API design with authentication, role-based access control, async database access, background jobs, and Dockerized deployment.
 
-For more details, visit the project's [website](https://jod35.github.io/fastapi-beyond-crud-docs/site/).
+This repository is a strong representation of how I structure backend services end to end: clean modules, migrations, containerized local development, and automated tests.
 
-## Table of Contents
+## Why I Built This
 
-1. [Getting Started](#getting-started)
-2. [Prerequisites](#prerequisites)
-3. [Project Setup](#project-setup)
-4. [Running the Application](#running-the-application)
-5. [Running Tests](#running-tests)
-6. [Contributing](#contributing)
+- Practice building a complete backend beyond basic CRUD.
+- Apply real-world backend patterns: JWT auth, async Postgres, Redis, and task queues.
 
-## Getting Started
-Follow the instructions below to set up and run your FastAPI project.
+## Core Features
 
-### Prerequisites
-Ensure you have the following installed:
+- User signup, login, token refresh, logout, and email verification flows.
+- Password reset request and confirmation flow.
+- Book management APIs with ownership checks.
+- Review and tag modules for richer domain modeling.
+- Role-aware authorization guards.
+- Celery worker for background email delivery.
+- Alembic migrations for schema versioning.
 
-- Python >= 3.10
+## Tech Stack
+
+- Python 3.11
+- FastAPI
+- SQLModel + SQLAlchemy (async)
 - PostgreSQL
 - Redis
+- Celery
+- Alembic
+- Docker Compose
+- Pytest
 
-### Project Setup
-1. Clone the project repository:
-    ```bash
-    git clone https://github.com/jod35/fastapi-beyond-CRUD.git
-    ```
-   
-2. Navigate to the project directory:
-    ```bash
-    cd fastapi-beyond-CRUD/
-    ```
+## Project Structure
 
-3. Create and activate a virtual environment:
-    ```bash
-    python3 -m venv env
-    source env/bin/activate
-    ```
+```
+src/
+  auth/         # authentication, JWT, account workflows
+  books/        # book endpoints and business logic
+  reviews/      # review endpoints and logic
+  tags/         # tag endpoints and logic
+  db/           # database engine, models, redis integration
+  celery_tasks.py
+  config.py
+  middleware.py
+migrations/     # alembic migration environment and versions
+tests/          # API and auth test coverage
+```
 
-4. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+## API Docs
 
-5. Set up environment variables by copying the example configuration:
-    ```bash
-    cp .env.example .env
-    ```
+Once the app is running locally:
 
-6. Run database migrations to initialize the database schema:
-    ```bash
-    alembic upgrade head
-    ```
+- Swagger UI: http://localhost:8000/api/v1/docs
+- OpenAPI JSON: http://localhost:8000/api/v1/openapi.json
 
-7. Open a new terminal and ensure your virtual environment is active. Start the Celery worker (Linux/Unix shell):
-    ```bash
-    sh runworker.sh
-    ```
+## Running Locally With Docker
 
-## Running the Application
-Start the application:
+### 1. Prerequisites
+
+- Docker Desktop installed and running
+- Docker Compose v2 (available as `docker compose`)
+
+### 2. Configure Environment Variables
+
+Create a `.env` file in the project root with values for:
+
+- `DATABASE_URL`
+- `POSTGRES_USER`
+- `POSTGRES_PASSWORD`
+- `POSTGRES_DB`
+- `REDIS_URL`
+- `JWT_SECRET`
+- `JWT_ALGORITHM`
+- `MAIL_USERNAME`
+- `MAIL_PASSWORD`
+- `MAIL_SERVER`
+- `MAIL_PORT`
+- `MAIL_FROM`
+- `MAIL_FROM_NAME`
+- `DOMAIN`
+
+### 3. Start Services
 
 ```bash
-fastapi dev src/
+docker compose up --build -d
 ```
-Alternatively, you can run the application using Docker:
+
+### 4. Run Database Migrations
+
 ```bash
-docker compose up -d
+docker compose exec web alembic upgrade head
 ```
-## Running Tests
-Run the tests using this command
+
+### 5. Verify Services
+
+```bash
+docker compose ps
+```
+
+The API should now be reachable on http://localhost:8000.
+
+## Run Tests
+
 ```bash
 pytest
 ```
 
-## Contributing
-I welcome contributions to improve the documentation! You can contribute [here](https://github.com/jod35/fastapi-beyond-crud-docs).
+## Highlights
+
+- End-to-end backend ownership: API, data model, auth, async workflows, and background jobs.
+- Clean separation of concerns across routes, schemas, and service layers.
+- Docker-first developer setup for reproducible local environments.
+- Uses migrations and testing as part of regular development workflow.

@@ -8,23 +8,23 @@ jobs:
       name: testing
 
     env: 
-      DATABASE_URL=${{secrets.DATABASE_URL}}
-      JWT_SECRET=${{secrets.JWT_SECRET}}
-      JWT_ALGORITHM=${{secrets.JWT_ALGORITHM}}
-      REDIS_HOST=${{secrets.REDIS_HOST}}
-      REDIS_PORT=${{secrets.REDIS_PORT}}
-      REDIS_URL=${{secrets.REDIS_URL}}
-      MAIL_USERNAME=${{secrets.MAIL_USERNAME}}
-      MAIL_PASSWORD=${{secrets.MAIL_PASSWORD}}
-      MAIL_SERVER=${{secrets.MAIL_SERVER}}
-      MAIL_PORT=${{secrets.MAIL_PORT}}
-      MAIL_FROM=${{secrets.MAIL_FROM}}
-      MAIL_FROM_NAME=${{secrets.MAIL_FROM_NAME}}
-      DOMAIN=${{secrets.DOMAIN}}
-      POSTGRES_USER=${{secrets.POSTGRES_USER}}
-      POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}
-      POSTGRES_DB=${{secrets.POSTGRES_DB}}
-      ALLOWED_HOSTS=${{secrets.ALLOWED_HOSTS}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
+      JWT_SECRET: ${{secrets.JWT_SECRET}}
+      JWT_ALGORITHM: ${{secrets.JWT_ALGORITHM}}
+      REDIS_HOST: ${{secrets.REDIS_HOST}}
+      REDIS_PORT: ${{secrets.REDIS_PORT}}
+      REDIS_URL: ${{secrets.REDIS_URL}}
+      MAIL_USERNAME: ${{secrets.MAIL_USERNAME}}
+      MAIL_PASSWORD: ${{secrets.MAIL_PASSWORD}}
+      MAIL_SERVER: ${{secrets.MAIL_SERVER}}
+      MAIL_PORT: ${{secrets.MAIL_PORT}}
+      MAIL_FROM: ${{secrets.MAIL_FROM}}
+      MAIL_FROM_NAME: ${{secrets.MAIL_FROM_NAME}}
+      DOMAIN: ${{secrets.DOMAIN}}
+      POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+      POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+      POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+      ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
 
     services:
       postgres:

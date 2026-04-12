@@ -19,20 +19,20 @@ jobs:
       MAIL_SERVER=${{secrets.MAIL_SERVER}}
       MAIL_PORT=${{secrets.MAIL_PORT}}
       MAIL_FROM=${{secrets.MAIL_FROM}}
-      MAIL_FROM_NAME=$${secrets.MAIL_FROM_NAME}
-      DOMAIN=$${secrets.DOMAIN}
-      POSTGRES_USER=$${secrets.POSTGRES_USER}
-      POSTGRES_PASSWORD=$${secrets.POSTGRES_PASSWORD}
-      POSTGRES_DB=$${secrets.POSTGRES_DB}
-      ALLOWED_HOSTS=$${secrets.ALLOWED_HOSTS}
+      MAIL_FROM_NAME=${{secrets.MAIL_FROM_NAME}}
+      DOMAIN=${{secrets.DOMAIN}}
+      POSTGRES_USER=${{secrets.POSTGRES_USER}}
+      POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}}
+      POSTGRES_DB=${{secrets.POSTGRES_DB}}
+      ALLOWED_HOSTS=${{secrets.ALLOWED_HOSTS}}
 
     services:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_USER: $${secrets.POSTGRES_USER}
-          POSTGRES_DB: $${secrets.POSTGRES_DB}
-          POSTGRES_PASSWORD: $${secrets.POSTGRES_PASSWORD}
+          POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+          POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
         ports:
           - 5432:5432
         options: >-

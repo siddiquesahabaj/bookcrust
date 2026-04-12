@@ -65,7 +65,7 @@ jobs:
       - name: Install all dependencies
         run: pip install -r requirements.txt
       - name: Starting Background Celery Workers
-        run: celery -A src.celery_tasks.c_app worker --loglevel=INFO
+        run: celery -A src.celery_tasks.c_app worker --loglevel=INFO &
       - name: test with pytest
         run: |
           pip install pytest

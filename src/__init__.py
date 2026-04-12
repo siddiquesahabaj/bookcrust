@@ -34,6 +34,13 @@ register_all_errors(app)
 
 register_middleware(app)
 
+@app.get("/")
+async def root():
+    return """
+
+    <h1> Welcome to BookCrust API </h1>
+    <p> Checkout the docs at : <a href="bookcrust.xyz/api/v1/docs">Docs</a></p>
+"""
 
 app.include_router(book_router, prefix=f"{version_prefix}/books", tags=["books"])
 app.include_router(auth_router, prefix=f"{version_prefix}/auth", tags=["auth"])

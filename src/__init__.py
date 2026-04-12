@@ -35,7 +35,7 @@ register_all_errors(app)
 
 register_middleware(app)
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def root():
     return """
     <!DOCTYPE html>

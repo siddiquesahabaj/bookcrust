@@ -70,3 +70,20 @@ jobs:
         run: |
           pip install pytest
           pytest src/tests
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: 
+      name: production
+    steps:
+      - name: Deploy to Ubuntu Server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{secrets.PROD_HOST}}
+          username: ${{secrets.PROD_USERNAME}}
+          password: ${{secrets.PROD_PASSWORD}}
+          script: |
+            cd app
+            git pull
+            sudo systemctl restart bookcrustapi

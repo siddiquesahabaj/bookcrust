@@ -21,7 +21,7 @@ This REST API is able to;
 version_prefix =f"/api/{version}"
 
 app = FastAPI(
-    title="Bookly",
+    title="BookCrust",
     description=description,
     version=version,
     license_info={"name": "MIT License", "url": "https://opensource.org/license/mit"},

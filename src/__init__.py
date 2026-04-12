@@ -5,7 +5,7 @@ from src.reviews.routes import review_router
 from src.tags.routes import tags_router
 from .errors import register_all_errors
 from .middleware import register_middleware
-from fastapi.response import HTMLResponse
+from fastapi.responses import HTMLResponse
 
 
 version = "v1"

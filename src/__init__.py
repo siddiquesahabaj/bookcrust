@@ -81,7 +81,7 @@ async def root():
                 <a href="/api/v1/docs" class="px-8 py-3 bg-white text-slate-950 font-semibold rounded-xl hover:bg-blue-400 hover:text-white transition-all duration-300 shadow-xl shadow-white/5">
                     View Documentation
                 </a>
-                <a href="https://github.com" target="https://github.com/siddiquesahabaj/bookcrust" class="px-8 py-3 glass text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300">
+                <a href="https://github.com/siddiquesahabaj/bookcrust" target="_blank" class="px-8 py-3 glass text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300">
                     GitHub Repo
                 </a>
             </div>
@@ -89,7 +89,7 @@ async def root():
             <div class="pt-8 border-t border-white/5 flex justify-center gap-6 text-sm text-slate-500 uppercase tracking-widest">
                 <span class="flex items-center gap-2">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    System Active
+                    Current Version
                 </span>
                 <span>v1.0.0</span>
             </div>
